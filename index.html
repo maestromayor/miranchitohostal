@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Ranchito - Hostal en la playa</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-blue-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <!-- Header -->
+    <header class="p-4 flex justify-between items-center shadow-md bg-opacity-90 bg-white dark:bg-gray-900 fixed top-0 w-full z-50">
+        <h1 class="text-2xl font-bold cursor-pointer flex justify-center items-center gap-1" id="logo">
+            <i data-lucide="palmtree"></i>
+            Mi Ranchito
+        </h1>
+        <nav class="hidden md:flex space-x-6">
+            <button class="hover:text-blue-500 dark:hover:text-yellow-300" data-scroll-to="services">Servicios</button>
+            <button class="hover:text-blue-500 dark:hover:text-yellow-300" data-scroll-to="destinations">Destinos</button>
+            <button class="hover:text-blue-500 dark:hover:text-yellow-300" data-scroll-to="rooms">Habitaciones</button>
+            <button class="hover:text-blue-500 dark:hover:text-yellow-300" data-scroll-to="contact">Contacto</button>
+        </nav>
+    </header>
+
+    <main class="pt-16 p-4">
+        <!-- Hero Section -->
+        <section id="hero" class="relative h-screen flex flex-col justify-center items-center text-center bg-cover bg-center" style="background-image: url('https://en77jjzp3wa.exactdn.com/wp-content/uploads/2019/04/rincon-del-mar-9.jpg?strip=all&lossy=1&quality=60&webp=60&sharp=1&ssl=1');">
+            <div class="absolute inset-0 bg-black/50 backdrop-blur-xs"></div>
+            <div class="relative z-10 max-w-2xl px-6 fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
+                    Bienvenido a <span class="text-yellow-300">Mi Ranchito</span>
+                </h1>
+                <p class="mt-4 text-lg md:text-xl text-white">
+                    Tu refugio perfecto en la playa, donde el mar y la brisa te esperan.
+                </p>
+                <a href="https://wa.link/ubrneb" target="_blank" rel="noopener noreferrer">
+                    <button class="mt-6 px-6 py-3 bg-yellow-400 text-gray-900 font-semibold rounded-lg shadow-md hover:bg-yellow-500 transition">
+                        <i data-lucide="phone-call" class="inline-block mr-2"></i>
+                        Reserva Ahora
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-16 bg-blue-100 dark:bg-gray-900 text-gray-800 dark:text-white">
+            <div class="max-w-5xl mx-auto text-center">
+                <h2 class="text-3xl font-bold">Nuestros Servicios</h2>
+                <p class="mt-2 text-lg text-gray-600 dark:text-gray-300">
+                    Todo lo que necesitas para una estadía inolvidable.
+                </p>
+
+                <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="services-grid">
+                    <!-- Services will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Destinations Section -->
+        <section id="destinations" class="py-16 bg-blue-50 dark:bg-gray-900 text-gray-800 dark:text-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center">Nuestros Destinos</h2>
+                <p class="mt-4 text-lg text-center text-gray-600 dark:text-gray-300">
+                    Descubre los lugares más emblemáticos y paradisíacos que rodean nuestro hostal.
+                </p>
+                <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="destinations-grid">
+                    <!-- Destinations will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Rooms Carousel Section -->
+        <section id="rooms" class="relative w-full h-[80vh] bg-gray-900 overflow-hidden">
+            <div id="carousel-container" class="absolute inset-0 flex transition-transform duration-700 ease-in-out">
+                <!-- Rooms will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Navigation buttons -->
+            <button id="prev-slide" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:scale-110 transition">
+                <i data-lucide="chevron-left" size="30"></i>
+            </button>
+            <button id="next-slide" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:scale-110 transition">
+                <i data-lucide="chevron-right" size="30"></i>
+            </button>
+
+            <!-- Indicators -->
+            <div id="carousel-indicators" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <!-- Indicators will be inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 px-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-white text-center">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold">Contáctanos</h2>
+                <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                    ¿Quieres vivir la mejor experiencia en Mi Ranchito? Escríbenos por WhatsApp o síguenos 
+                    en Instagram para más información. ¡Estamos aquí para ayudarte!
+                </p>
+
+                <!-- Imagen/GIF -->
+                <div class="mt-6 flex justify-center">
+                    <img src="https://i.pinimg.com/originals/17/00/09/170009ce70039c9a6c900f9e61759d88.gif" 
+                        alt="Contacto" class="w-full h-64 object-cover rounded-lg">
+                </div>
+
+                <!-- Botones de contacto -->
+                <div class="mt-6 flex justify-center space-x-4">
+                    <a href="https://www.instagram.com/miranchitohostal" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center space-x-2 border-pink-500 border hover:bg-pink-600/20 text-pink-500 py-2 px-4 rounded-lg transition">
+                        <i data-lucide="instagram" size="20"></i>
+                        <span>Instagram</span>
+                    </a>
+
+                    <a href="https://wa.link/ubrneb" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center space-x-2 border-green-500 border hover:bg-green-600/20 text-green-500 py-2 px-4 rounded-lg transition">
+                        <i data-lucide="phone" size="20"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-blue-100 dark:bg-gray-900 text-gray-800 dark:text-white py-6">
+            <div class="max-w-5xl mx-auto text-center">
+                <h3 class="text-xl font-semibold">Mi Ranchito</h3>
+                <p class="text-gray-600 dark:text-gray-300 mt-2">
+                    Un lugar paradisíaco para relajarte y disfrutar de la playa.
+                </p>
+
+                <!-- Iconos de contacto -->
+                <div class="flex justify-center space-x-6 mt-4">
+                    <a href="https://www.instagram.com/miranchitohostal" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-600 dark:text-gray-300 hover:text-pink-500 transition">
+                        <i data-lucide="instagram" size="24"></i>
+                    </a>
+
+                    <a href="https://wa.link/ubrneb" target="_blank" rel="noopener noreferrer"
+                        class="text-gray-600 dark:text-gray-300 hover:text-green-500 transition">
+                        <i data-lucide="phone" size="24"></i>
+                    </a>
+
+                    <a href="mailto:contacto@miranchito.com"
+                        class="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition">
+                        <i data-lucide="mail" size="24"></i>
+                    </a>
+                </div>
+
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">
+                    &copy; <span id="current-year"></span> Mi Ranchito. Todos los derechos reservados.
+                </p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Data for different sections
+        const services = [
+            {
+                icon: 'bed-double',
+                title: "Comodidad Total",
+                desc: "Habitaciones acogedoras con vista al mar."
+            },
+            {
+                icon: 'martini',
+                title: "Bar & Restaurante",
+                desc: "Deliciosos cócteles y comida fresca."
+            },
+            {
+                icon: 'waves-ladder',
+                title: "Piscina",
+                desc: "Relájate en nuestra piscina infinita."
+            },
+            {
+                icon: 'wifi-high',
+                title: "Wi-Fi Gratis",
+                desc: "Siempre conectado, incluso en la playa."
+            }
+        ];
+
+        const destinations = [
+            {
+                name: "Rincón del Mar",
+                image: "https://en77jjzp3wa.exactdn.com/wp-content/uploads/2022/09/rincon-del-mar-2.jpg?strip=all&lossy=1&quality=60&webp=60&sharp=1&ssl=1",
+                description: "Un paraíso de playas de arena blanca y aguas cristalinas, ideal para el ecoturismo y la cultura local."
+            },
+            {
+                name: "Playa del Francés",
+                image: "https://quintadelmar.co/img/galeria/frances/frances1.jpg",
+                description: "Conocida por sus tranquilas aguas y ambiente relajado, perfecta para deportes acuáticos y descanso."
+            },
+            {
+                name: "Coveñas",
+                image: "https://www.viajescosmostour.com/wp-content/uploads/2023/04/Tolu-Covenas-1-1024x683.jpg",
+                description: "Extensas playas de arena blanca y mar sereno, con una amplia oferta turística y actividades náuticas."
+            },
+            {
+                name: "Archipiélago de San Bernardo",
+                image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/ab/83/b2/archipielago-de-san-bernardo.jpg?w=800&h=-1&s=1",
+                description: "Conjunto de islas con aguas turquesas y arrecifes coralinos, ideales para el buceo y snorkel."
+            },
+            {
+                name: "Playa Blanca en Tolú",
+                image: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Palo_Blanco-Tol%C3%BA.jpg",
+                description: "Playa tranquila y solitaria, perfecta para relajarse y disfrutar del paisaje natural."
+            },
+            {
+                name: "Playa Palo Blanco en Tolú",
+                image: "https://larazon.co/wp-content/uploads/2024/05/PORTADAS-Yajaira-WEB-14-1024x683.jpg",
+                description: "Un paraíso de arena dorada y aguas cristalinas, ideal para descansar y disfrutar del mar en total tranquilidad."
+            }
+        ];
+
+        const rooms = [
+            {
+                name: "Suite Vista al Mar",
+                image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/575938907.jpg?k=1ea8248fefdfee995ba617d684a49a5f533c8c6ea5c36e84930832937f2f84e7&o=&hp=1",
+                description: "Habitación espaciosa con balcón y vista espectacular al océano."
+            },
+            {
+                name: "Habitaciones múltiples",
+                image: "https://hotelplayadivina.com.co/wp-content/uploads/2023/07/hotel-playa-divina-covenas-habitacion-multiple3.jpg",
+                description: "Un espacio rústico y acogedor a pocos pasos de la playa."
+            },
+            {
+                name: "Habitación Doble",
+                image: "https://kprehotel.com/wp-content/uploads/2022/06/KPRE-habitaciones-mayo-45.jpg",
+                description: "Perfecta para compartir, con todas las comodidades modernas."
+            }
+        ];
+
+        // Scroll to section
+        document.querySelectorAll('[data-scroll-to]').forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-scroll-to');
+                document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+
+        document.getElementById('logo').addEventListener('click', () => {
+            document.getElementById('hero').scrollIntoView({ behavior: "smooth" });
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Populate services
+        const servicesGrid = document.getElementById('services-grid');
+        services.forEach((service, index) => {
+            const serviceElement = document.createElement('div');
+            serviceElement.className = 'p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center flex flex-col items-center cursor-pointer hover-scale';
+            serviceElement.style.opacity = '0';
+            serviceElement.style.transform = 'translateY(50px)';
+            serviceElement.innerHTML = `
+                <div class="text-yellow-500 mb-3 flex justify-center items-center">
+                    <i data-lucide="${service.icon}" size="40"></i>
+                </div>
+                <h3 class="text-xl font-semibold">${service.title}</h3>
+                <p class="mt-2 text-gray-600 dark:text-gray-300">${service.desc}</p>
+            `;
+            servicesGrid.appendChild(serviceElement);
+            
+            // Add animation
+            setTimeout(() => {
+                serviceElement.style.transition = 'opacity 0.5s, transform 0.5s';
+                serviceElement.style.opacity = '1';
+                serviceElement.style.transform = 'translateY(0)';
+            }, index * 200);
+        });
+
+        // Populate destinations
+        const destinationsGrid = document.getElementById('destinations-grid');
+        destinations.forEach((destination, index) => {
+            const destinationElement = document.createElement('div');
+            destinationElement.className = 'bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover-scale';
+            destinationElement.innerHTML = `
+                <img src="${destination.image}" alt="${destination.name}" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">${destination.name}</h3>
+                    <p class="text-gray-600 dark:text-gray-300">${destination.description}</p>
+                </div>
+            `;
+            destinationsGrid.appendChild(destinationElement);
+        });
+
+        // Setup carousel
+        let currentIndex = 0;
+        const carouselContainer = document.getElementById('carousel-container');
+        const carouselIndicators = document.getElementById('carousel-indicators');
+        
+        // Create carousel items
+        rooms.forEach((room, index) => {
+            const roomElement = document.createElement('div');
+            roomElement.className = 'w-full flex-shrink-0 relative';
+            roomElement.innerHTML = `
+                <img src="${room.image}" alt="${room.name}" class="w-full h-[80vh] object-cover">
+                <div class="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-white text-center">
+                    <h3 class="text-4xl font-bold">${room.name}</h3>
+                    <p class="mt-2 text-lg max-w-2xl">${room.description}</p>
+                </div>
+            `;
+            carouselContainer.appendChild(roomElement);
+            
+            // Create indicator
+            const indicator = document.createElement('button');
+            indicator.className = `h-3 w-3 rounded-full transition ${index === currentIndex ? "bg-white scale-125" : "bg-gray-500"}`;
+            indicator.addEventListener('click', () => goToSlide(index));
+            carouselIndicators.appendChild(indicator);
+        });
+        
+        // Update carousel position
+        function updateCarousel() {
+            carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Update indicators
+            Array.from(carouselIndicators.children).forEach((indicator, i) => {
+                if (i === currentIndex) {
+                    indicator.classList.add('bg-white', 'scale-125');
+                    indicator.classList.remove('bg-gray-500');
+                } else {
+                    indicator.classList.remove('bg-white', 'scale-125');
+                    indicator.classList.add('bg-gray-500');
+                }
+            });
+        }
+        
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+            resetCarouselInterval();
+        }
+        
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % rooms.length;
+            updateCarousel();
+        }
+        
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + rooms.length) % rooms.length;
+            updateCarousel();
+        }
+        
+        document.getElementById('next-slide').addEventListener('click', () => {
+            nextSlide();
+            resetCarouselInterval();
+        });
+        
+        document.getElementById('prev-slide').addEventListener('click', () => {
+            prevSlide();
+            resetCarouselInterval();
+        });
+        
+        // Auto-rotate carousel
+        let carouselInterval = setInterval(nextSlide, 5000);
+        
+        function resetCarouselInterval() {
+            clearInterval(carouselInterval);
+            carouselInterval = setInterval(nextSlide, 5000);
+        }
+        
+        // Initialize Lucide icons after dynamic content is added
+        lucide.createIcons();
+        
+        // Add scroll animations for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section > div').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
